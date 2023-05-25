@@ -1,14 +1,15 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef __MONTY_H__
+#define __MONTY_H__
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/stat.h>
-#include <string.h>
-#include <ctype.h>
-#include <sys/types.h>
 
+#define STACK 0
+#define QUEUE 1
+#define DELIMS " \n\t\a\b"
+
+extern char **op_toks;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -26,8 +27,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -43,48 +42,46 @@ typedef struct instruction_s
 } instruction_t;
 
 
-extern FILE *file;
-FILE *file;
+char **strtow(char *str, char *delims);
+char *get_int(int n);
+
+void mon_push(stack_t **stack, unsigned int line_number);
+void mon_pall(stack_t **stack, unsigned int line_number);
+void mon_pint(stack_t **stack, unsigned int line_number);
+void mon_pop(stack_t **stack, unsigned int line_number);
+void mon_swap(stack_t **stack, unsigned int line_number);
+void mon_add(stack_t **stack, unsigned int line_number);
+void mon_nop(stack_t **stack, unsigned int line_number);
+void mon_sub(stack_t **stack, unsigned int line_number);
+void mon_div(stack_t **stack, unsigned int line_number);
+void mon_mul(stack_t **stack, unsigned int line_number);
+void mon_mod(stack_t **stack, unsigned int line_number);
+void mon_pchar(stack_t **stack, unsigned int line_number);
+void mon_pstr(stack_t **stack, unsigned int line_number);
+void mon_rotl(stack_t **stack, unsigned int line_number);
+void mon_rotr(stack_t **stack, unsigned int line_number);
+void mon_stack(stack_t **stack, unsigned int line_number);
+void mon_queue(stack_t **stack, unsigned int line_number);
+
+int usage_error(void);
+int malloc_error(void);
+int f_open_error(char *filename);
+int unknown_op_error(char *opcode, unsigned int line_number);
+int no_int_error(unsigned int line_number);
+int pop_error(unsigned int line_number);
+int pint_error(unsigned int line_number);
+int short_stack_error(unsigned int line_number, char *op);
+int div_error(unsigned int line_number);
+int pchar_error(unsigned int line_number, char *message);
 
 
-void f_push(stack_t **stack, unsigned int line_number, char *temp);
-void f_pall(stack_t **stack, unsigned int line_number);
-void f_pint(stack_t **stack, unsigned int line_number);
-void f_pop(stack_t **stack, unsigned int line_number);
-void f_swap(stack_t **stack, unsigned int line_number);
-void f_add(stack_t **stack, unsigned int line_number);
-void f_nop(stack_t **stack, unsigned int line_number);
-void f_sub(stack_t **stack, unsigned int line_number);
-void f_div(stack_t **stack, unsigned int line_number);
-void f_mul(stack_t **stack, unsigned int line_number);
-void f_mod(stack_t **stack, unsigned int line_number);
-void f_rotl(stack_t **stack, unsigned int line_number);
-void f_pchar(stack_t **stack, unsigned int line_number);
-void f_rotr(stack_t **stack, unsigned int line_number);
-void f_pstr(stack_t **stack, unsigned int line_number);
-
-void (*operator_function)(stack_t **, unsigned int);
-void (*go(char *op_f, unsigned int l, stack_t **s))(stack_t**, unsigned int);
-
-void f_free(stack_t *stack);
-int _isdigit(char *str);
-
-#endif /* MONTY_H */
+void free_stack(stack_t **stack);
+int init_stack(stack_t **stack);
+int check_mode(stack_t *stack);
+void free_tokens(void);
+unsigned int token_arr_len(void);
+int run_monty(FILE *script_fd);
+void set_op_tok_error(int error_code);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif /* __MONTY_H__ */
