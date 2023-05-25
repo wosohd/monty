@@ -3,7 +3,6 @@
  * addnode - add node to head stack
  * @head: head of stack
  * @n: new value
- * 
 */
 void addnode(stack_t **head, int n)
 {

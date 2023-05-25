@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * f_swap - Swaps the top two value elements of a stack_t linked list
+ * mon_swap - Swaps the top two value elements of a stack_t linked list
  * @head: stack head
- * @counter: The current working line number of a Monty bytecode
+ * @line_number: The current working line number of a Monty bytecode
 */
 void mon_swap(stack_t **head, unsigned int line_number)
 {

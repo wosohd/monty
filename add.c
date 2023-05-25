@@ -3,7 +3,6 @@
  * mon_add - Adds the top two values of a stack_t linked list
  * @head: Adds the top two values of a stack_t linked list
  * @line_number: The current working line number
- * 
 */
 void mon_add(stack_t **head, unsigned int line_number)
 {

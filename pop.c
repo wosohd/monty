@@ -3,7 +3,6 @@
  * mon_pop -  Removes the top value element of a stack_t linked list
  * @head: A pointer to the top mode node of a stack_t linked list
  * @line_number: The current working line number
- * 
 */
 void mon_pop(stack_t **head, unsigned int line_number)
 {

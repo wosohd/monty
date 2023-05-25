@@ -3,7 +3,6 @@
  * mon_pint - Prints the top value of a stack_t linked list
  * @head: stack head
  * @line_number: The current working line number
- * 
 */
 void mon_pint(stack_t **head, unsigned int line_number)
 {
