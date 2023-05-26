@@ -2,8 +2,7 @@
 /**
  * mon_queue - prints the top
  * @head: head of stack
- * @counter: The current working line number of a Monty bytecode
- * 
+ * @line_number: The current working line number of a Monty bytecode
 */
 void mon_queue(stack_t **head, unsigned int line_number)
 {
@@ -16,7 +15,6 @@ void mon_queue(stack_t **head, unsigned int line_number)
  * addqueue - add node to tail stack
  * @n: new_value
  * @head: head of stack
- * 
 */
 void addqueue(stack_t **head, int n)
 {
