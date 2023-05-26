@@ -1,10 +1,9 @@
 #include "monty.h"
-
+bus_t bus = {NULL, NULL, NULL, 0};
 /**
 * main - monty code interpreter
-* @argc: the count of arguments passed to the program
-* @argv: pointer to an array of char pointers to arguments
-* Return: 0 on success
+* @argc: arguments
+* @argv: file location
 */
 int main(int argc, char *argv[])
 {
